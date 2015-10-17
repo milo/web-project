@@ -1,2 +1,5 @@
-/vendor
+/log/
+/sessions/
+/temp/
+/vendor/
 app/config/config.local.neon
