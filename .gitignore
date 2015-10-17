@@ -2,4 +2,5 @@
 /sessions/
 /temp/
 /vendor/
+app/config/config.debug.neon
 app/config/config.local.neon
