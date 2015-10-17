@@ -1,7 +1,13 @@
-# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
-# https://nette.org/security-warning
-
 parameters:
+#	databases:
+#		application:
+#			database: foo
+#			port: 5432
+#			username:  # set in config.local.neon
+#			password:  # set in config.local.neon
+
+#	mailing:
+#		from: 'Robot <robot@localhost>'
 
 
 php:
@@ -16,7 +22,24 @@ application:
 
 session:
 	expiration: 14 days
+	savePath: "%tempDir%/../sessions"
 
 
 services:
 	router: App\RouterFactory::createRouter
+
+
+#excensions:
+#	dibi.application: Dibi\Bridges\Nette\DibiExtension22
+#	replicator: Kdyby\Replicator\DI\ReplicatorExtension
+
+
+#dibi.application:
+#	# autowired: no
+#	driver: postgre
+#	host: localhost
+#	port: %databases.application.port%
+#	database: %databases.application.database%
+#	username: %databases.application.username%
+#	password: %databases.application.password%
+#	lazy: TRUE
