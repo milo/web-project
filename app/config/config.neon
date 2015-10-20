@@ -28,6 +28,12 @@ session:
 services:
 	router: App\RouterFactory::createRouter
 
+	# Factories
+	- App\Factories\FormFactory
+
+	# Latte
+	- App\UI\LatteFilters(%wwwDir%)
+
 
 #excensions:
 #	dibi.application: Dibi\Bridges\Nette\DibiExtension22
