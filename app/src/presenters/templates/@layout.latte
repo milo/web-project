@@ -2,11 +2,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>{ifset title}{include title|striptags} | {/ifset}Nette Web</title>
+	<title>{ifset title}{include title |striptags}{/ifset}</title>
 
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	<link rel="stylesheet" href="{$basePath}/css/main.css?v={='css/main.css' |mTime}">
+	<script src="{$basePath}/js/main.js?v={='js/main.js' |mTime}"></script>
 </head>
 
 <body>
@@ -14,8 +16,6 @@
 
 	{include content}
 
-	{block scripts}
-	<script src="//nette.github.io/resources/js/netteForms.min.js"></script>
-	{/block}
+	<script>{include '@inline.js'}</script>
 </body>
 </html>
