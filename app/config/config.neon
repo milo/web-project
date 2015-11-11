@@ -35,7 +35,7 @@ services:
 	- App\UI\LatteFilters(%wwwDir%)
 
 
-#excensions:
+#extensions:
 #	dibi.application: Dibi\Bridges\Nette\DibiExtension22
 #	replicator: Kdyby\Replicator\DI\ReplicatorExtension
 
