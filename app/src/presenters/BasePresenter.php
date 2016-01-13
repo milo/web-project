@@ -4,6 +4,7 @@ namespace App\Presenters;
 
 use App;
 use Nette\Application\UI;
+use Nette\Utils\Html;
 use Nette\Utils\Strings;
 
 
@@ -60,6 +61,39 @@ abstract class BasePresenter extends UI\Presenter
 		}
 
 		return FALSE;
+	}
+
+
+	/**
+	 * @param  string|array
+	 * @param  string
+	 * @param  \Exception|NULL $e
+	 * @return \stdClass
+	 */
+	public function flashMessage($message, $type = 'info', \Exception $e = NULL)
+	{
+		if (is_array($message)) {
+			$el = (string) Html::el()->setHtml(array_shift($message));
+			if (strpos($el, '%') !== FALSE) {
+				$el = preg_replace_callback('/%([bius])%/', function ($m) use (& $message) {
+					if (count($message)) {
+						return (string) Html::el($m[1] === 's' ? NULL : $m[1])->setText(array_shift($message));
+					}
+				}, $el);
+			}
+			$el = Html::el()->setHtml($el);
+		} else {
+			$el = Html::el()->setText($message);
+		}
+
+		if ($e) {
+			$el = Html::el()
+				->add($el)
+				->add(Html::el('br'))
+				->add(Html::el('small')->setText($e->getMessage()));
+		}
+
+		return parent::flashMessage($el, $type);
 	}
 
 
