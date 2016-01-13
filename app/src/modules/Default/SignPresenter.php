@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Presenters;
+namespace App\DefaultModule\Presenters;
 
 use App;
 use App\Factories;
-use App\Model;
 use App\Security;
 use Nette\Application\UI;
 
@@ -46,15 +45,13 @@ class SignPresenter extends BasePresenter
 
 	public function formSubmitted(UI\Form $form, $values)
 	{
-
-
 		$identity = new Security\Identity;
 
 		$this->getUser()->login($identity);
 		$this->getUser()->setExpiration(0, TRUE, TRUE);
 
 		$this->restoreRequest($this->backlink);
-		$this->forward(':Homepage:default');
+		$this->forward('Homepage:default');
 		die();
 	}
 

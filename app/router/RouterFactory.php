@@ -18,10 +18,21 @@ class RouterFactory
 		$router = new RouteList;
 
 		$router[] = new Route('index.php', 'Homepage:default', Route::ONE_WAY);
-		$router[] = new Route('admin/<presenter>/<action>[/<id>]', 'Admin:Homepage:default');
-		$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
+		$router[] = new Route('admin/<presenter>/<action>[/<id>]', self::defaults('Admin'));
+		$router[] = new Route('<presenter>/<action>/<id>', self::defaults('Default'));
 
 		return $router;
+	}
+
+
+	private static function defaults($module, $presenter = 'Homepage', $action = 'default')
+	{
+		return [
+			'module' => $module,
+			'presenter' => $presenter,
+			'action' => $action,
+			'id' => NULL,
+		];
 	}
 
 }
