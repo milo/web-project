@@ -63,9 +63,13 @@ abstract class BasePresenter extends UI\Presenter
 	}
 
 
-	protected function createTemplate($class = NULL)
+	/**
+	 * @return \Nette\Bridges\ApplicationLatte\Template
+	 */
+	protected function createTemplate()
 	{
-		$template = parent::createTemplate($class);
+		/** @var \Nette\Bridges\ApplicationLatte\Template $template */
+		$template = parent::createTemplate();
 		$this->latteFilters->install($template->getLatte());
 		return $template;
 	}
