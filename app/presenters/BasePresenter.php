@@ -13,6 +13,8 @@ use Nette\Utils\Strings;
  */
 abstract class BasePresenter extends UI\Presenter
 {
+	use App\UI\RichFlashMessage;
+
 	/** @var App\UI\LatteFilters */
 	protected $latteFilters;
 
