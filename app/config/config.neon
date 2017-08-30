@@ -24,6 +24,9 @@ session:
 services:
 	router: App\RouterFactory::createRouter
 
+	# Factories
+	- App\Factories\FormFactory
+
 
 php:
 	date.timezone: Europe/Prague
