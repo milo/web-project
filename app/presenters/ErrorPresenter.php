@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Presenters;
+namespace App;
 
 use Nette;
 use Nette\Application\Responses;
