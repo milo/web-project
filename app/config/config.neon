@@ -27,6 +27,9 @@ services:
 	# Factories
 	- App\Factories\FormFactory
 
+	# Templates
+	- App\UI\LatteFilters(%tempDir%/../www)
+
 
 php:
 	date.timezone: Europe/Prague
