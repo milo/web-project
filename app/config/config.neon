@@ -1,4 +1,13 @@
 parameters:
+#	databases:
+#		application:
+#			database: foo
+#			port: 5432
+#			username:  # set in config.local.neon
+#			password:  # set in config.local.neon
+
+#	mailing:
+#		from: 'Robot <robot@localhost>'
 
 
 application:
@@ -9,7 +18,27 @@ application:
 
 session:
 	expiration: 14 days
+	savePath: "%tempDir%/../sessions"
 
 
 services:
 	router: App\RouterFactory::createRouter
+
+
+php:
+	date.timezone: Europe/Prague
+
+
+#extensions:
+#	dibi.application: Dibi\Bridges\Nette\DibiExtension22
+
+
+#dibi.application:
+#	# autowired: no
+#	driver: postgre
+#	host: localhost
+#	port: %databases.application.port%
+#	database: %databases.application.database%
+#	username: %databases.application.username%
+#	password: %databases.application.password%
+#	lazy: TRUE
